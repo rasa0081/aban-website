@@ -1,0 +1,110 @@
+/**
+*
+*	Name:			Veno Typeface
+*	Version:			1.0
+*	Author:			Amir Mesbahi
+*	Created on:		October 2023
+*	Updated on:		October 2023
+*	Vendor:			http://fontiran.com
+*	Copyright:		Commercial/Proprietary Software
+--------------------------------------------------------------------------------------
+فونت ابر یک نرم افزار مالکیتی محسوب می شود. جهت آگاهی از قوانین استفاده از این فونت ها لطفا به وب سایت (فونت ایران دات کام) مراجعه نمایید
+--------------------------------------------------------------------------------------
+Veno fonts are considered a proprietary software. To gain information about the laws regarding the use of these fonts, please visit www.fontiran.com 
+--------------------------------------------------------------------------------------
+This set of fonts are used in this project under the license: (.....)
+------------------------------------------------------------------------------------- fonts/-
+*	
+**/
+
+@font-face {
+	font-family: Veno;
+	font-style: normal;
+	font-weight: 10;
+	src: url('Veno-Thin.woff') format('woff'),   
+	url('Veno-Thin.woff2') format('woff2');		 	 
+}
+@font-face {
+	font-family: Veno;
+	font-style: normal;
+	font-weight: 100;
+	src: url('Veno-ExtraLight.woff') format('woff'),   
+	url('Veno-ExtraLight.woff2') format('woff2');		 	 
+}
+@font-face {
+	font-family: Veno;
+	font-style: normal;
+	font-weight: 200;
+	src: url('Veno-UltraLight.woff') format('woff'),   
+	url('Veno-UltraLight.woff2') format('woff2');		 	 
+}
+@font-face {
+	font-family: Veno;
+	font-style: normal;
+	font-weight: 300;
+	src: url('Veno-Light.woff') format('woff'),   
+	url('Veno-Light.woff2') format('woff2');		 	 
+}
+@font-face {
+	font-family: Veno;
+	font-style: normal;
+	font-weight: normal;
+	src: url('Veno-Regular.woff') format('woff'),   
+	url('Veno-Regular.woff2') format('woff2');		 	 
+}
+@font-face {
+	font-family: Veno;
+	font-style: normal;
+	font-weight: 500;
+	src: url('Veno-Medium.woff') format('woff'),   
+	url('Veno-Medium.woff2') format('woff2');		 	 
+}
+@font-face {
+	font-family: Veno;
+	font-style: normal;
+	font-weight: 600;
+	src: url('Veno-DemiBold.woff') format('woff'),   
+	url('Veno-DemiBold.woff2') format('woff2');		 	 
+}
+@font-face {
+	font-family: Veno;
+	font-style: normal;
+	font-weight: 650;
+	src: url('Veno-SemiBold.woff') format('woff'),   
+	url('Veno-SemiBold.woff2') format('woff2');		 	 
+}
+@font-face {
+	font-family: Veno;
+	font-style: normal;
+	font-weight: bold;
+	src: url('Veno-Bold.woff') format('woff'),   
+	url('Veno-Bold.woff2') format('woff2');	
+}
+@font-face {
+	font-family: Veno;
+	font-style: normal;
+	font-weight: 800;
+	src: url('Veno-ExtraBold.woff') format('woff'),   
+	url('Veno-ExtraBold.woff2') format('woff2');		 	 
+}
+@font-face {
+	font-family: Veno;
+	font-style: normal;
+	font-weight: 900;
+	src: url('Veno-UltraBold.woff') format('woff'),   
+	url('Veno-UltraBold.woff2') format('woff2');		 	 
+}
+@font-face {
+	font-family: Veno;
+	font-style: normal;
+	font-weight: 930;
+	src: url('Veno-Black.woff') format('woff'),   
+	url('Veno-Black.woff2') format('woff2');		 	 
+}
+@font-face {
+	font-family: Veno;
+	font-style: normal;
+	font-weight: 960;
+	src: url('Veno-Heavy.woff') format('woff'),   
+	url('Veno-Heavy.woff2') format('woff2');		 	 
+}

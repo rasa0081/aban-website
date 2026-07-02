@@ -1,0 +1,137 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Article {
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(500)
+  intro     String   @db.Text
+  content   String   @db.LongText
+  category  String   @db.VarChar(100)
+  status    String   @default("draft") @db.VarChar(20)
+  type      String   @default("normal") @db.VarChar(20)
+  image     String?  @db.VarChar(1000)
+  imageAlt  String?  @db.VarChar(300)
+  metaDescription String? @db.VarChar(300)
+  keywords  String?  @db.VarChar(500)
+  views     Int      @default(0)
+  likes     Int      @default(0)
+  date      String   @db.VarChar(50)
+  fontSize  Int      @default(16)
+  fontColor String   @default("#1a1e24") @db.VarChar(20)
+  isBold    Boolean  @default(false)
+  isItalic  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("articles")
+}
+
+model Portfolio {
+  id           Int      @id @default(autoincrement())
+  title        String   @db.VarChar(500)
+  category     String   @db.VarChar(100)
+  image        String?  @db.VarChar(1000)
+  tags         String   @default("") @db.VarChar(500)
+  year         String   @db.VarChar(20)
+  client       String   @db.VarChar(200)
+  description  String?  @db.Text
+  duration     String?  @db.VarChar(100)
+  url          String?  @db.VarChar(1000)
+  features     String?  @db.Text
+  videoUrl     String?  @db.VarChar(1000)
+  videoTitle   String?  @db.VarChar(500)
+  showPreview  Boolean  @default(false)
+  visible      Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("portfolio")
+}
+
+model SiteContent {
+  id    Int    @id @default(autoincrement())
+  key   String @unique @db.VarChar(100)
+  value String @db.LongText
+
+  @@map("site_content")
+}
+
+model Banner {
+  id        Int      @id @default(autoincrement())
+  title     String?  @db.VarChar(300)
+  subtitle  String?  @db.VarChar(300)
+  image     String?  @db.VarChar(1000)
+  link      String?  @db.VarChar(1000)
+  bgColor   String   @default("#0c2b29") @db.VarChar(20)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("banners")
+}
+
+model SubCompany {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(200)
+  logo      String?  @db.VarChar(1000)
+  url       String   @db.VarChar(500)
+  visible   Boolean  @default(true)
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("sub_companies")
+}
+
+model ArticleCategory {
+  id       Int                   @id @default(autoincrement())
+  name     String                @db.VarChar(100)
+  slug     String                @unique @db.VarChar(100)
+  parentId Int?
+  parent   ArticleCategory?      @relation("CategoryChildren", fields: [parentId], references: [id])
+  children ArticleCategory[]     @relation("CategoryChildren")
+  order    Int                   @default(0)
+  visible  Boolean               @default(true)
+  createdAt DateTime             @default(now())
+
+  @@map("article_categories")
+}
+
+model SectionImage {
+  id          Int      @id @default(autoincrement())
+  sectionId   String   @db.VarChar(50)
+  src         String   @db.VarChar(1000)
+  alt         String?  @db.VarChar(300)
+  title       String   @db.VarChar(200)
+  description String?  @db.VarChar(200)
+  details     String?  @db.Text
+  category    String?  @db.VarChar(100)
+  date        String?  @db.VarChar(20)
+  rating      String?  @db.VarChar(20)
+  order       Int      @default(0)
+  visible     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@map("section_images")
+}
+
+model HomeSection {
+  id         Int      @id @default(autoincrement())
+  sectionKey String   @unique @db.VarChar(50)
+  type       String   @default("card") @db.VarChar(20)
+  title      String   @db.VarChar(500)
+  subtitle   String?  @db.Text
+  buttons    String   @default("[]") @db.LongText
+  order      Int      @default(0)
+  visible    Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("home_sections")
+}

@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+
+
+body {
+  overflow-x: hidden;
+  background-color: #f3f5f7;
+  font-family: 'Veno', Roboto, Arial, sans-serif;
+  font-weight: 600;
+}
+
+/* Better touch scrolling on mobile */
+@media (max-width: 768px) {
+  html {
+    scroll-snap-type: none;
+  }
+  
+  .MuiContainer-root {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* ── Sidebar clearance on desktop ───────────────────────────────────────────
+   The dock/sidebar is ~70px wide on lg and ~90px on xl, fixed on the right
+   edge. We add matching padding on the LEFT too, so the page's content area
+   stays visually centered in the viewport instead of being pushed off-center.
+────────────────────────────────────────────────────────────────────────── */
+@media (min-width: 1200px) {
+  main {
+    padding-right: 80px !important;
+    padding-left: 80px !important;
+  }
+}
+
+@media (min-width: 1536px) {
+  main {
+    padding-right: 100px !important;
+    padding-left: 100px !important;
+  }
+}

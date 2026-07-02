@@ -1,0 +1,54 @@
+# Aban Agency — آژانس تجارت الکترونیک آبان
+> A full-service digital agency based in Tehran, Iran, specializing in web design, mobile app development, SEO, digital marketing, and branding.
+
+## About
+Aban Agency (آژانس آبان) has over 8 years of experience delivering end-to-end digital solutions for businesses across Iran. Our slogan is "داستان، چهره، اثر" (Story, Face, Impact). We work with startups, established brands, and enterprises to build their digital presence.
+
+## Services
+- **Web Design & Development**: Custom responsive websites, landing pages, and web applications built with modern technologies (Next.js, React)
+- **Mobile App Development**: Native and cross-platform apps for Android and iOS (React Native)
+- **E-commerce Solutions**: Full-featured online stores with secure payment integration
+- **SEO & Digital Marketing**: Search engine optimization, content strategy, and growth marketing
+- **Branding & Visual Identity**: Logo design, brand guidelines, motion graphics, and billboard advertising
+- **UI/UX Design**: User interface and user experience design for web and mobile
+- **Content Production**: Copywriting, content calendars, scriptwriting, and motion design
+
+## Portfolio Categories
+- E-commerce platforms
+- Corporate websites
+- Mobile applications
+- Branding projects
+
+## Key Pages
+- Homepage: https://aban.agency
+- About: https://aban.agency/about
+- Services: https://aban.agency/services
+- Portfolio: https://aban.agency/portfolio
+- Articles & Blog: https://aban.agency/articles
+- Contact: https://aban.agency/contact
+
+## Contact Information
+- Website: https://aban.agency
+- Location: Tehran, Iran
+- Email: info@abaan.ir
+
+## Technology Stack
+Next.js, React, Node.js, MySQL, Prisma, Material UI, React Native, Firebase, GSAP
+
+## Target Audience
+Businesses in Iran seeking professional digital services including web design, app development, SEO, and digital marketing in Persian (Farsi) language.
+
+## Language
+Primary language: Persian (Farsi / فارسی)
+Secondary language: English
+
+## Content
+The site publishes regular articles on topics including:
+- SEO best practices
+- Web design trends
+- Digital marketing strategies
+- Frontend development
+- UI/UX design principles
+
+## Sitemap
+- https://aban.agency/sitemap.xml
