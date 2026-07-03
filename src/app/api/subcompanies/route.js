@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import prisma from '../../../lib/prisma';
-
+import { requireAuth } from '../../../lib/auth';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
@@ -16,6 +16,8 @@ export async function GET() {
 }
 
 export async function POST(request) {
+  const auth = await requireAuth(request);
+    if (auth) return auth;
   try {
     const body = await request.json();
     const company = await prisma.subCompany.create({

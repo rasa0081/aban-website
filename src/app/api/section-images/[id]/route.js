@@ -1,7 +1,11 @@
 import { NextResponse } from 'next/server';
 import prisma from '../../../../lib/prisma';
+import { requireAuth } from '../../../../lib/auth';
+
 
 export async function PUT(request, { params }) {
+  const auth = await requireAuth(request);
+    if (auth) return auth;
   const { id } = await params;
   try {
     const body = await request.json();
@@ -27,6 +31,9 @@ export async function PUT(request, { params }) {
 }
 
 export async function DELETE(request, { params }) {
+  const auth = await requireAuth(request);
+    if (auth) return auth;
+
   const { id } = await params;
   try {
     await prisma.sectionImage.delete({ where: { id: parseInt(id) } });

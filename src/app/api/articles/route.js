@@ -4,7 +4,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 import prisma from '../../../lib/prisma';
-
+import { requireAuth } from '../../../lib/auth';
 // GET all articles
 export async function GET() {
   try {
@@ -20,6 +20,8 @@ export async function GET() {
 
 // POST create new article
 export async function POST(request) {
+  const auth = await requireAuth(request);
+    if (auth) return auth;
   try {
     const body = await request.json();
     const article = await prisma.article.create({

@@ -237,8 +237,7 @@ function LoginScreen({ onLogin }) {
         body: JSON.stringify({ username, password }),
       });
       if (res.ok) {
-        const session = { token: btoa(`${username}:${Date.now()}`), expires: Date.now() + SESSION_DURATION };
-        sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+        const session = { token: btoa(`${username}:${password}`), expires: Date.now() + SESSION_DURATION };        sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
         onLogin(true);
       } else {
         const newAttempts = attempts + 1;

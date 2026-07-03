@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
+import { requireAuth } from '../../../lib/auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -50,6 +51,8 @@ async function processImage(buffer, ext) {
 }
 
 export async function POST(request) {
+  const auth = await requireAuth(request);
+    if (auth) return auth;
   try {
     const formData = await request.formData();
     const file = formData.get('file');
