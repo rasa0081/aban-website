@@ -26,7 +26,7 @@ export const metadata = {
     },
   },
   verification: {
-    google: 'XbGPMdgx3xi30XK_aCNdXixgYvMPIKViCjFIKa3aSd8',
+    google: 'KMU56htW8iE2lTt2Eyaz4QFAp7QXI_vX5GJlBccc88E',
   },
   openGraph: {
     type: 'website',
