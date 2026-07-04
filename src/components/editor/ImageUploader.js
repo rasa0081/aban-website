@@ -15,6 +15,18 @@ export default function ImageUploader({ value, onChange, label = 'تصویر', h
   const [error, setError] = useState('');
   const inputRef = useRef(null);
 
+  const getAuthHeaders = () => {
+    try {
+      const raw = sessionStorage.getItem('aban_admin_session');
+      if (!raw) return {};
+      const session = JSON.parse(raw);
+      if (!session?.token || Date.now() > session.expires) return {};
+      return { Authorization: `Bearer ${session.token}` };
+    } catch {
+      return {};
+    }
+  };
+
   const uploadFile = useCallback(async (file) => {
     if (!file) return;
     setError('');
@@ -22,7 +34,7 @@ export default function ImageUploader({ value, onChange, label = 'تصویر', h
     try {
       const formData = new FormData();
       formData.append('file', file);
-      const res = await fetch('/api/upload', { method: 'POST', body: formData });
+      const res = await fetch('/api/upload', { method: 'POST', headers: getAuthHeaders(), body: formData });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'خطا در آپلود');
       onChange(data.url);

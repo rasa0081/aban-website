@@ -29,37 +29,35 @@ export default function ContactPage() {
   });
 
   const [contactData, setContactData] = useState({
-    address: 'تهران، خیابان ولیعصر، بالاتر از میدان ونک، پلاک ۱۲۳، طبقه ۴',
+    address: '',
     phone1: '',
     phone2: '',
     mobile: '',
-    email1: 'info@abaan.ir',
-    email2: 'support@abaan.ir',
-    workHours: `شنبه تا چهارشنبه: ۹ - ۱۸
-پنجشنبه: ۹ - ۱۳
-جمعه: تعطیل`,
-    instagram: 'https://www.instagram.com/aban.ec?igsh=MWJqZGsyc3Zya3F1Mw==',
-    linkedin: 'https://www.linkedin.com/in/aban-e-commerce-bb4412415?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
-    telegram: 'https://t.me/abanagencyg',
-    whatsapp: 'https://wa.me/message/JSIPIQGW3NESM1',
+    email1: '',
+    email2: '',
+    workHours: '',
+    instagram: '',
+    linkedin: '',
+    telegram: '',
+    whatsapp: '',
   });
 
   useEffect(() => {
     setMounted(true);
     contentApi.getAll().then(data => {
-      setContactData(prev => ({
-        address: data.contact_address || prev.address,
-        phone1: data.contact_phone1 || prev.phone1,
-        phone2: data.contact_phone2 || prev.phone2,
-        mobile: data.contact_mobile || prev.mobile,
-        email1: data.contact_email1 || prev.email1,
-        email2: data.contact_email2 || prev.email2,
-        workHours: data.contact_work_hours || prev.workHours,
-        instagram: data.contact_instagram || prev.instagram,
-        linkedin: data.contact_linkedin || prev.linkedin,
-        telegram: data.contact_telegram || prev.telegram,
-        whatsapp: data.contact_whatsapp || prev.whatsapp,
-      }));
+      setContactData({
+        address: data.contact_address || '',
+        phone1: data.contact_phone1 || '',
+        phone2: data.contact_phone2 || '',
+        mobile: data.contact_mobile || '',
+        email1: data.contact_email1 || '',
+        email2: data.contact_email2 || '',
+        workHours: data.contact_work_hours || '',
+        instagram: data.contact_instagram || '',
+        linkedin: data.contact_linkedin || '',
+        telegram: data.contact_telegram || '',
+        whatsapp: data.contact_whatsapp || '',
+      });
     }).catch(() => {});
   }, []);
 
@@ -158,7 +156,7 @@ export default function ContactPage() {
       <Box sx={{ bgcolor: 'white', borderRadius: '20px', p: 2.5, mb: 3, border: '1px solid rgba(197,165,108,0.12)' }}>
         <Typography variant="h4" sx={{ fontWeight: 'bold', fontSize: '0.9rem', color: colors.primary, mb: 2 }}>شبکه‌های اجتماعی</Typography>
         <Box sx={{ display: 'flex', gap: 1.5, flexWrap: 'wrap' }}>
-          {socialLinks.map(s => (
+          {socialLinks.filter(s => s.url).map(s => (
             <Box key={s.name} component="a" href={s.url} target="_blank"
               sx={{ display: 'flex', alignItems: 'center', gap: 1, bgcolor: `${s.color}15`, px: 2, py: 1, borderRadius: '50px', textDecoration: 'none', border: `1px solid ${s.color}30` }}>
               <Box sx={{ color: s.color }}>{s.icon}</Box>
@@ -389,7 +387,7 @@ export default function ContactPage() {
                     شبکه‌های اجتماعی
                   </Typography>
                   <Box sx={{ display: 'flex', gap: 1.5 }}>
-                    {socialLinks.map((social, index) => (
+                    {socialLinks.filter(social => social.url).map((social, index) => (
                       <IconButton
                         key={index}
                         href={social.url}

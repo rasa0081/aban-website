@@ -17,7 +17,7 @@ export default function Loading() {
       <Box sx={{
         position: 'absolute',
         inset: 0,
-        background: 'url("/pattern.png")',
+        background: 'url("/pattern.webp")',
         backgroundSize: '1200px 1200px',
         opacity: 0.04,
         pointerEvents: 'none',

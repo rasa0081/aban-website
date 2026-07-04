@@ -15,6 +15,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
 
 // Strip HTML tags for plain-text previews (intro is now rich HTML)
 const stripHtml = (html) => (html || '').replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
@@ -56,6 +57,7 @@ export default function ArticlesPage() {
   const [openCategories, setOpenCategories] = useState({});
   const [articlesData, setArticlesData] = useState([]);
   const [likedIds, setLikedIds] = useState(new Set());
+  const [bookmarkedIds, setBookmarkedIds] = useState(new Set());
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -201,6 +203,8 @@ export default function ArticlesPage() {
     try {
       const stored = JSON.parse(localStorage.getItem('aban_liked_articles') || '[]');
       if (Array.isArray(stored)) setLikedIds(new Set(stored));
+      const bookmarked = JSON.parse(localStorage.getItem('aban_bookmarked_articles') || '[]');
+      if (Array.isArray(bookmarked)) setBookmarkedIds(new Set(bookmarked));
     } catch {}
     // Fetch articles from database
     articlesApi.getAll().then(data => {
@@ -225,6 +229,14 @@ export default function ArticlesPage() {
 
   const handleCategoryToggle = (categoryId) => {
     setOpenCategories(prev => ({ ...prev, [categoryId]: !prev[categoryId] }));
+  };
+
+  const toggleBookmark = (article) => {
+    const id = article.id;
+    const next = new Set(bookmarkedIds);
+    if (next.has(id)) next.delete(id); else next.add(id);
+    setBookmarkedIds(next);
+    try { localStorage.setItem('aban_bookmarked_articles', JSON.stringify([...next])); } catch {}
   };
 
   // Toggle like on an article (one like per visitor, tracked in localStorage)
@@ -529,13 +541,19 @@ export default function ArticlesPage() {
                 <Box sx={{ display: 'flex', gap: 0.5 }}>
                   <IconButton
                     size="small"
+                    onClick={(e) => { e.stopPropagation(); e.preventDefault(); toggleBookmark(article); }}
+                    title={bookmarkedIds.has(article.id) ? 'حذف از نشان‌شده‌ها' : 'نشان کردن'}
                     sx={{
-                      color: colors.gold,
+                      color: bookmarkedIds.has(article.id) ? colors.primary : colors.gold,
                       p: 0.5,
+                      transition: 'all 0.15s',
                       '&:hover': { bgcolor: 'rgba(197,165,108,0.1)' },
+                      '&:active': { transform: 'scale(0.92)' },
                     }}
                   >
-                    <BookmarkBorderIcon sx={{ fontSize: isMainArticle ? 20 : 18 }} />
+                    {bookmarkedIds.has(article.id)
+                      ? <BookmarkIcon sx={{ fontSize: isMainArticle ? 20 : 18 }} />
+                      : <BookmarkBorderIcon sx={{ fontSize: isMainArticle ? 20 : 18 }} />}
                   </IconButton>
                   <Button
                     variant="text"

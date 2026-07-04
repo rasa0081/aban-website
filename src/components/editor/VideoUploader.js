@@ -17,6 +17,18 @@ export default function VideoUploader({ value, onChange, label = 'ویدیو', h
   const [error, setError] = useState('');
   const inputRef = useRef(null);
 
+  const getAuthToken = () => {
+    try {
+      const raw = sessionStorage.getItem('aban_admin_session');
+      if (!raw) return null;
+      const session = JSON.parse(raw);
+      if (!session?.token || Date.now() > session.expires) return null;
+      return session.token;
+    } catch {
+      return null;
+    }
+  };
+
   const uploadFile = useCallback(async (file) => {
     if (!file) return;
     setError('');
@@ -31,6 +43,8 @@ export default function VideoUploader({ value, onChange, label = 'ویدیو', h
       await new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', '/api/upload');
+        const token = getAuthToken();
+        if (token) xhr.setRequestHeader('Authorization', `Bearer ${token}`);
         xhr.upload.onprogress = (e) => {
           if (e.lengthComputable) {
             setProgress(Math.round((e.loaded / e.total) * 100));

@@ -47,11 +47,7 @@ export default function ArticleDetail() {
       .then(data => {
         if (data && !data.error) {
           setArticle(data);
-          fetch(`/api/articles/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ ...data, views: (data.views || 0) + 1 }),
-          }).catch(() => {});
+          fetch(`/api/articles/${id}/views`, { method: 'POST' }).catch(() => {});
         } else {
           setNotFound(true);
         }

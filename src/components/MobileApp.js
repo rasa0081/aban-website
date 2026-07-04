@@ -123,7 +123,7 @@ function MobileHero({ hero }) {
       {/* Background decoration */}
       <Box sx={{ position: 'absolute', top: '10%', right: '-20%', width: '70vw', height: '70vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(197,165,108,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
       <Box sx={{ position: 'absolute', bottom: '5%', left: '-25%', width: '80vw', height: '80vw', borderRadius: '50%', background: 'radial-gradient(circle, rgba(197,165,108,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
-      <Box sx={{ position: 'absolute', inset: 0, background: 'url("/pattern.png")', backgroundSize: '800px', opacity: 0.04, pointerEvents: 'none' }} />
+      <Box sx={{ position: 'absolute', inset: 0, background: 'url("/pattern.webp")', backgroundSize: '800px', opacity: 0.04, pointerEvents: 'none' }} />
 
       {/* Logo */}
       <Box sx={{ mb: 4, opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(-20px)', transition: 'all 0.7s ease 0.1s' }}>
@@ -193,7 +193,7 @@ function MobileSectionCard({ section, index, dbImages = [] }) {
       pt: '64px', pb: 3,
     }}>
       {section.hasPattern && (
-        <Box sx={{ position: 'absolute', inset: 0, background: 'url("/pattern.png")', backgroundSize: '600px', opacity: 0.04, pointerEvents: 'none' }} />
+        <Box sx={{ position: 'absolute', inset: 0, background: 'url("/pattern.webp")', backgroundSize: '600px', opacity: 0.04, pointerEvents: 'none' }} />
       )}
 
       <Box sx={{

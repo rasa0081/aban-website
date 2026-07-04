@@ -54,7 +54,7 @@ function LayoutContent({ children }) {
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
       <Box sx={{
         position: 'fixed', inset: 0, zIndex: -1, pointerEvents: 'none',
-        background: 'url("/pattern.png")', backgroundSize: '1200px 1200px', opacity: 0.05,
+        background: 'url("/pattern.webp")', backgroundSize: '1200px 1200px', opacity: 0.05,
       }} />
       <LoadingScreen />
       <MobileStyles />

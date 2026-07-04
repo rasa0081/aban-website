@@ -105,7 +105,7 @@ export default function ImageCarousel({ images }) {
         transform: animating ? 'translateY(8px)' : 'translateY(0)',
       }}>
         {/* frosted pattern layer (real blur, no backdrop-filter) */}
-        <Box aria-hidden sx={{ position: 'absolute', inset: -40, backgroundImage: 'url("/pattern.png")', backgroundSize: '300px', filter: 'blur(5px)', opacity: 0.5, zIndex: 0, pointerEvents: 'none' }} />
+        <Box aria-hidden sx={{ position: 'absolute', inset: -40, backgroundImage: 'url("/pattern.webp")', backgroundSize: '300px', filter: 'blur(5px)', opacity: 0.5, zIndex: 0, pointerEvents: 'none' }} />
         {/* content above the frost */}
         <Box sx={{ position: 'relative', zIndex: 1 }}>
         {/* Category badge */}

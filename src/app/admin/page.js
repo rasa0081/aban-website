@@ -548,7 +548,7 @@ export default function AdminPage() {
   };
 
   // Article handlers
-  const openNewArticle = () => setArticleDialog({ open: true, data: { title: '', intro: '', content: '', category: 'web-design', status: 'draft', type: 'normal', image: '', imageAlt: '', metaDescription: '', keywords: '', views: 0, date: new Date().toLocaleDateString('fa-IR'), fontSize: 16, fontColor: '#1a1e24', isBold: false, isItalic: false } });
+  const openNewArticle = () => setArticleDialog({ open: true, data: { title: '', intro: '', content: '', category: categories.filter(c => c.visible)[0]?.slug || '', status: 'draft', type: 'normal', image: '', imageAlt: '', metaDescription: '', keywords: '', views: 0, date: new Date().toLocaleDateString('fa-IR'), fontSize: 16, fontColor: '#1a1e24', isBold: false, isItalic: false } });
   const openEditArticle = (a) => setArticleDialog({ open: true, data: { ...a } });
   const saveArticle = async () => {
     const d = articleDialog.data;

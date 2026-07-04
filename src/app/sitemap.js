@@ -17,10 +17,10 @@ export default async function sitemap() {
   try {
     const articles = await prisma.article.findMany({
       where: { status: 'published' },
-      select: { id: true, updatedAt: true },
+      select: { id: true, slug: true, updatedAt: true },
     });
     articlePages = articles.map((article) => ({
-      url: `${baseUrl}/articles/${article.id}`,
+      url: `${baseUrl}/articles/${article.slug || article.id}`,
       lastModified: article.updatedAt,
       changeFrequency: 'monthly',
       priority: 0.7,

@@ -336,7 +336,7 @@ export default function Home() {
                   position: 'absolute',
                   width: '100vw',
                   height: '100vh',
-                  background: 'url("/pattern.png")',
+                  background: 'url("/pattern.webp")',
                   backgroundSize: '1200px 1200px',
                   opacity: '0.05'
                 }}
@@ -549,7 +549,7 @@ export default function Home() {
                     <Box aria-hidden sx={{
                       position: 'absolute',
                       inset: -40,
-                      backgroundImage: 'url("/pattern.png")',
+                      backgroundImage: 'url("/pattern.webp")',
                       backgroundSize: '360px',
                       filter: 'blur(5px)',
                       opacity: 0.5,

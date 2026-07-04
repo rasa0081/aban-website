@@ -21,7 +21,7 @@ import { common, createLowlight } from 'lowlight';
 import { Extension } from '@tiptap/core';
 import { Box, IconButton, Tooltip, Divider, TextField, Dialog, DialogTitle, DialogContent, DialogActions, Button, Select, MenuItem, Popover } from '@mui/material';
 import ImageUploader from './ImageUploader';
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import { colors } from '../../theme/theme';
 
 // Icons
@@ -164,7 +164,7 @@ export default function RichTextEditor({ value, onChange, placeholder = 'محت�
 
   const editor = useEditor({
     extensions: [
-      StarterKit.configure({ codeBlock: false }),
+      StarterKit.configure({ codeBlock: false, link: false, underline: false }),
       TextStyle,
       Color,
       FontFamily,
