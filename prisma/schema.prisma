@@ -10,6 +10,7 @@ datasource db {
 model Article {
   id        Int      @id @default(autoincrement())
   title     String   @db.VarChar(500)
+  slug      String?  @db.VarChar(500)
   intro     String   @db.Text
   content   String   @db.LongText
   category  String   @db.VarChar(100)

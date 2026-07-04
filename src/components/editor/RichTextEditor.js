@@ -178,8 +178,8 @@ export default function RichTextEditor({ value, onChange, placeholder = 'محت�
         linkOnPaste: true,
         HTMLAttributes: {
           class: 'editor-link',
-          target: null,  // don't add target="_blank" by default
-          rel: null,     // don't add rel by default — we set it per link below
+          target: null,
+          rel: null,
         },
         validate: href => true,
       }),
@@ -195,7 +195,9 @@ export default function RichTextEditor({ value, onChange, placeholder = 'محت�
       RtlDirExtension,
     ],
     content: value || '',
-    onUpdate: ({ editor }) => onChange(editor.getHTML()),
+    onUpdate: ({ editor }) => {
+      onChange(editor.getHTML());
+    },
     editorProps: {
       attributes: {
         dir: 'rtl',
@@ -203,6 +205,13 @@ export default function RichTextEditor({ value, onChange, placeholder = 'محت�
       },
     },
   });
+
+  // Sync external value changes without triggering infinite loop
+  useEffect(() => {
+    if (editor && value !== editor.getHTML()) {
+      editor.commands.setContent(value || '', false);
+    }
+  }, [editor, value]);
 
   // ── Link handler ──
   const openLinkDialog = useCallback(() => {

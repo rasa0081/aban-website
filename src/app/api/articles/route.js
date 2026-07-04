@@ -1,10 +1,12 @@
 import { NextResponse } from 'next/server';
+import { generateSlug } from '../../../lib/slug';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 import prisma from '../../../lib/prisma';
 import { requireAuth } from '../../../lib/auth';
+
 // GET all articles
 export async function GET() {
   try {
@@ -21,12 +23,20 @@ export async function GET() {
 // POST create new article
 export async function POST(request) {
   const auth = await requireAuth(request);
-    if (auth) return auth;
+  if (auth) return auth;
+
   try {
     const body = await request.json();
+
+    // Generate unique slug from title
+    const existing = await prisma.article.findMany({ select: { slug: true } });
+    const existingSlugs = existing.map(a => a.slug).filter(Boolean);
+    const slug = generateSlug(body.title, existingSlugs);
+
     const article = await prisma.article.create({
       data: {
         title: body.title,
+        slug,
         intro: body.intro || '',
         content: body.content || '',
         category: body.category || 'general',

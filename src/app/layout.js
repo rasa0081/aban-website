@@ -7,7 +7,7 @@ import './globals.css';
 export const metadata = {
   metadataBase: new URL('https://aban.agency'),
   title: {
-    default: 'آژانس تجارت الکترونیک آبان',
+    default: 'آژانس تجارت الکترونیک و دیجیتال‌مارکتینگ آبان',
     template: '%s — آژانس آبان',
   },
   description: 'آژانس تجارت‌الکترونیک آبان ارائه دهنده خدمات حرفه‌ای در حوزه‌های طراحی‌گرافیک، برنامه‌نویسی و توسعه وبسایت، مارکتینگ وبازاریابی در دنیای  دیجیتال همگام با بروزترین متد‌ها در راستای ارزش‌های آبان و رضایت مشتریان است.',
@@ -32,7 +32,7 @@ export const metadata = {
     type: 'website',
     locale: 'fa_IR',
     url: 'https://aban.agency',
-    siteName: 'آژانس تجارت‌الکترونیک آبان',
+    siteName: 'آژانس تجارت الکترونیک و دیجیتال‌مارکتینگ آبان',
     title: 'آژانس آبان — داستان، چهره، اثر',
     description: 'آژانس تجارت‌الکترونیک آبان ارائه دهنده خدمات حرفه‌ای در حوزه‌های طراحی‌گرافیک، برنامه‌نویسی و توسعه وبسایت، مارکتینگ وبازاریابی در دنیای  دیجیتال همگام با بروزترین متد‌ها در راستای ارزش‌های آبان و رضایت مشتریان است.',
     images: [
@@ -110,7 +110,7 @@ export default function RootLayout({ children }) {
           </ClientLayout>
         </ThemeRegistry>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-FPNH6H9DP7"
+          src="https://www.googletagmanager.com/gtag/js?id=G-0RMK1S417Y"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -118,7 +118,7 @@ export default function RootLayout({ children }) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-FPNH6H9DP7');
+            gtag('config', 'G-0RMK1S417Y');
           `}
         </Script>
       </body>

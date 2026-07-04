@@ -539,7 +539,7 @@ export default function ArticlesPage() {
                   </IconButton>
                   <Button
                     variant="text"
-                    href={`/articles/${article.id}`}
+                    href={`/articles/${article.slug || article.id}`}
                     size="small"
                     sx={{
                       color: colors.gold,
@@ -791,7 +791,7 @@ export default function ArticlesPage() {
         <>
           {/* Featured article */}
           {filteredArticles.filter(a => a.type === 'main' || a.articleType === ARTICLE_TYPES?.MAIN).slice(0,1).map(article => (
-            <Box key={article.id} onClick={() => router.push(`/articles/${article.id}`)} sx={{ borderRadius: '24px', overflow: 'hidden', mb: 2.5, boxShadow: '0 4px 24px rgba(0,0,0,0.1)', position: 'relative', cursor: 'pointer', transition: 'all 0.2s', '&:active': { transform: 'scale(0.99)' } }}>
+            <Box key={article.id} href={`/articles/${article.slug || article.id}`} sx={{ borderRadius: '24px', overflow: 'hidden', mb: 2.5, boxShadow: '0 4px 24px rgba(0,0,0,0.1)', position: 'relative', cursor: 'pointer', transition: 'all 0.2s', '&:active': { transform: 'scale(0.99)' } }}>
               <Box component="img" src={article.image} alt={article.imageAlt || article.title} sx={{ width: '100%', height: 200, objectFit: 'contain', backgroundColor: '#f2f0ec' }} />
               <Box sx={{ position: 'absolute', top: 12, right: 12, bgcolor: colors.gold, color: colors.dark, px: 1.5, py: 0.4, borderRadius: '20px', fontSize: '0.65rem', fontWeight: 'bold' }}>ویژه</Box>
               <Box sx={{ p: 2.5, bgcolor: 'white' }}>
@@ -804,7 +804,7 @@ export default function ArticlesPage() {
           {/* Normal articles list */}
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             {filteredArticles.filter(a => a.type !== 'main' && a.articleType !== ARTICLE_TYPES?.MAIN).map(article => (
-              <Box key={article.id} onClick={() => router.push(`/articles/${article.id}`)} sx={{ bgcolor: 'white', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(197,165,108,0.12)', boxShadow: '0 2px 12px rgba(0,0,0,0.05)', cursor: 'pointer', transition: 'all 0.2s', '&:active': { transform: 'scale(0.99)' } }}>
+              <Box key={article.id} onClick={() => router.push(`/articles/${article.slug || article.id}`)} sx={{ bgcolor: 'white', borderRadius: '24px', overflow: 'hidden', border: '1px solid rgba(197,165,108,0.12)', boxShadow: '0 2px 12px rgba(0,0,0,0.05)', cursor: 'pointer', transition: 'all 0.2s', '&:active': { transform: 'scale(0.99)' } }}>
                 <Box component="img" src={article.image} alt={article.imageAlt || article.title} sx={{ width: '100%', height: 180, objectFit: 'contain', backgroundColor: '#f2f0ec', display: 'block' }} />
                 <Box sx={{ p: 2.5 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
